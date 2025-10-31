@@ -23,7 +23,7 @@
             margin: 0 auto;
             background: white;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
             overflow: hidden;
         }
 
@@ -37,7 +37,7 @@
         .header h1 {
             font-size: 2.5em;
             margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         .header p {
@@ -85,8 +85,14 @@
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .user-setup {
@@ -177,7 +183,7 @@
             padding: 25px;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .stat-card h3 {
@@ -212,7 +218,7 @@
 
         .day:hover {
             transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .day.checked {
@@ -260,7 +266,7 @@
             text-align: center;
             font-style: italic;
             font-size: 1.1em;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .guide-section {
@@ -344,13 +350,98 @@
             .header h1 {
                 font-size: 1.8em;
             }
-            
             .calendar {
                 grid-template-columns: repeat(4, 1fr);
             }
-            
             .stats {
                 grid-template-columns: 1fr;
+            }
+        }
+
+        /* Modal Popup Styles */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            animation: fadeInOverlay 0.3s ease-out;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        @keyframes fadeInOverlay {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .modal-content {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transform: scale(0.7) translateY(50px);
+            animation: popUp 0.4s ease-out forwards;
+            position: relative;
+        }
+
+        @keyframes popUp {
+            to {
+                transform: scale(1) translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .modal-content h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        .modal-content p {
+            color: #6c757d;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 1.5em;
+            cursor: pointer;
+            color: #999;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: #eb3349;
+        }
+
+        .modal-success .modal-content {
+            border-left: 5px solid #11998e;
+        }
+
+        .modal-warning .modal-content {
+            border-left: 5px solid #eb3349;
+        }
+
+        @media (max-width: 768px) {
+            .modal-content {
+                padding: 20px;
+                margin: 20px;
             }
         }
     </style>
@@ -423,7 +514,7 @@
         <!-- Tab Hướng dẫn -->
         <div id="guide" class="tab-content">
             <h2 style="color: #667eea; margin-bottom: 20px;">📖 Hướng dẫn sử dụng</h2>
-            
+
             <div class="guide-section">
                 <h3>🎯 No Nut November là gì?</h3>
                 <p>No Nut November (NNN) là thử thách tự nguyện diễn ra trong tháng 11, nơi người tham gia cam kết kiềm chế hoàn toàn trong suốt 30 ngày. Đây là cơ hội để rèn luyện ý chí, kỷ luật bản thân và tự khám phá khả năng kiểm soát của chính mình.</p>
@@ -458,43 +549,43 @@
         <!-- Tab Bí quyết -->
         <div id="tips" class="tab-content">
             <h2 style="color: #667eea; margin-bottom: 20px;">💡 Bí quyết vượt qua thử thách</h2>
-            
+
             <div class="tips-grid">
                 <div class="tip-card">
                     <h4>🏃 Tập thể dục</h4>
                     <p>Khi có "cảm giác", hãy tập thể dục ngay! Chạy bộ, hít đất, plank - bất cứ gì để chuyển hóa năng lượng.</p>
                 </div>
-                
+
                 <div class="tip-card">
                     <h4>🚿 Tắm nước lạnh</h4>
                     <p>Tắm nước lạnh giúp giảm ham muốn hiệu quả. Đây là vũ khí bí mật của nhiều người!</p>
                 </div>
-                
+
                 <div class="tip-card">
                     <h4>📵 Tránh triggers</h4>
                     <p>Tránh xa các nội dung kích thích: social media, phim ảnh, hình ảnh nhạy cảm. Out of sight, out of mind!</p>
                 </div>
-                
+
                 <div class="tip-card">
                     <h4>😴 Ngủ đủ giấc</h4>
                     <p>Ngủ đủ 7-8 tiếng giúp kiểm soát hormone tốt hơn. Mệt mỏi làm ý chí yếu đi!</p>
                 </div>
-                
+
                 <div class="tip-card">
                     <h4>🎯 Tạo mục tiêu</h4>
                     <p>Hãy có lý do rõ ràng tại sao bạn tham gia. Viết ra và đọc mỗi ngày để nhắc nhở bản thân!</p>
                 </div>
-                
+
                 <div class="tip-card">
                     <h4>👥 Tìm đồng đội</h4>
                     <p>Rủ bạn bè cùng tham gia! Có người đồng hành giúp động lực cao hơn rất nhiều.</p>
                 </div>
-                
+
                 <div class="tip-card">
                     <h4>📚 Học hỏi mới</h4>
                     <p>Dành thời gian học kỹ năng mới, đọc sách, xem phim hay. Bận rộn = ít suy nghĩ lung tung!</p>
                 </div>
-                
+
                 <div class="tip-card">
                     <h4>🧘 Thiền & hít thở</h4>
                     <p>Luyện tập mindfulness giúp kiểm soát suy nghĩ và cảm xúc tốt hơn. Thử 10 phút mỗi ngày!</p>
@@ -519,7 +610,7 @@
         <!-- Tab Giới thiệu -->
         <div id="about" class="tab-content">
             <h2 style="color: #667eea; margin-bottom: 20px;">ℹ️ Về thử thách này</h2>
-            
+
             <div class="guide-section">
                 <h3>🎯 Mục đích</h3>
                 <p>No Nut November không chỉ là một thử thách vui - đây là cơ hội để:</p>
@@ -568,303 +659,329 @@
         </div>
     </div>
 
+    <!-- Modal Popup -->
+    <div id="modalOverlay" class="modal-overlay">
+        <div class="modal-content" id="modalContent">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <h3 id="modalTitle"></h3>
+            <p id="modalMessage"></p>
+            <button class="btn btn-primary" onclick="closeModal()">OK</button>
+        </div>
+    </div>
+
     <script>
-    // Dữ liệu mặc định
-    const quotes = [
-        "Kỷ luật là cầu nối giữa mục tiêu và thành tựu.",
-        "Người chiến thắng không bao giờ bỏ cuộc. Người bỏ cuộc không bao giờ chiến thắng.",
-        "Thành công là tổng của những nỗ lực nhỏ được lặp đi lặp lại mỗi ngày.",
-        "Động lực khiến bạn bắt đầu. Thói quen giúp bạn tiếp tục.",
-        "Không có gì là không thể. Từ 'impossible' tự nó nói 'I'm possible'!",
-        "Khó khăn lớn nhất là quyết định hành động, phần còn lại chỉ là kiên trì.",
-        "Bạn mạnh mẽ hơn bạn nghĩ. Tin vào bản thân!",
-        "Mỗi ngày là một cơ hội mới để trở thành phiên bản tốt hơn của chính mình.",
-        "Đau đớn là tạm thời, nhưng niềm tự hào là mãi mãi.",
-        "Đừng xem đồng hồ, hãy làm như đồng hồ. Cứ tiếp tục đi."
-    ];
+        // Dữ liệu mặc định
+        const quotes = [
+            "Kỷ luật là cầu nối giữa mục tiêu và thành tựu.",
+            "Người chiến thắng không bao giờ bỏ cuộc. Người bỏ cuộc không bao giờ chiến thắng.",
+            "Thành công là tổng của những nỗ lực nhỏ được lặp đi lặp lại mỗi ngày.",
+            "Động lực khiến bạn bắt đầu. Thói quen giúp bạn tiếp tục.",
+            "Không có gì là không thể. Từ 'impossible' tự nó nói 'I'm possible'!",
+            "Khó khăn lớn nhất là quyết định hành động, phần còn lại chỉ là kiên trì.",
+            "Bạn mạnh mẽ hơn bạn nghĩ. Tin vào bản thân!",
+            "Mỗi ngày là một cơ hội mới để trở thành phiên bản tốt hơn của chính mình.",
+            "Đau đớn là tạm thời, nhưng niềm tự hào là mãi mãi.",
+            "Đừng xem đồng hồ, hãy làm như đồng hồ. Cứ tiếp tục đi."
+        ];
 
-    // Khởi tạo khi trang load
-    window.onload = function() {
-        loadUserData();
-        updateMotivationalQuote();
-        // Thêm data-tab cho các tab nếu chưa có (giả sử HTML đã có hoặc thêm động)
-        document.querySelectorAll('.tab').forEach((tab, index) => {
-            const tabs = ['home', 'guide', 'tips', 'about'];
-            tab.dataset.tab = tabs[index];
-        });
-    };
+        // Khởi tạo khi trang load
+        window.onload = function () {
+            loadUserData();
+            updateMotivationalQuote();
+            document.querySelectorAll('.tab').forEach((tab, index) => {
+                const tabs = ['home', 'guide', 'tips', 'about'];
+                tab.dataset.tab = tabs[index];
+            });
+            // Đóng modal khi click overlay
+            document.getElementById('modalOverlay').addEventListener('click', function (e) {
+                if (e.target === this) {
+                    closeModal();
+                }
+            });
+        };
 
-    function switchTab(tabName) {
-        // Xóa active từ tất cả tab và content
-        document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
-        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-        
-        // Thêm active cho tab tương ứng
-        const activeTab = document.querySelector(`[data-tab="${tabName}"]`);
-        if (activeTab) {
-            activeTab.classList.add('active');
+        function switchTab(tabName) {
+            document.querySelectorAll('.tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+
+            const activeTab = document.querySelector(`[data-tab="${tabName}"]`);
+            if (activeTab) {
+                activeTab.classList.add('active');
+            }
+
+            document.getElementById(tabName).classList.add('active');
         }
-        
-        // Thêm active cho content
-        document.getElementById(tabName).classList.add('active');
-    }
 
-    function updateMotivationalQuote() {
-        const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
-        document.getElementById('motivationalQuote').textContent = randomQuote;
-    }
+        function updateMotivationalQuote() {
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById('motivationalQuote').textContent = randomQuote;
+        }
 
-    function loadUserData() {
-        const username = localStorage.getItem('nnn_username');
-        if (username) {
-            document.getElementById('usernameInput').value = username;
+        // Hàm hiển thị Modal Popup
+        function showModal(title, message, type = 'warning') {
+            const overlay = document.getElementById('modalOverlay');
+            const content = document.getElementById('modalContent');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+
+            modalTitle.textContent = title;
+            modalMessage.textContent = message;
+
+            content.className = 'modal-content';
+            if (type === 'success') {
+                content.classList.add('modal-success');
+            } else if (type === 'warning') {
+                content.classList.add('modal-warning');
+            }
+
+            overlay.classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+        }
+
+        function loadUserData() {
+            const username = localStorage.getItem('nnn_username');
+            if (username) {
+                document.getElementById('usernameInput').value = username;
+                document.getElementById('displayUsername').textContent = username;
+                document.getElementById('userSetup').style.display = 'none';
+                document.getElementById('dashboard').classList.add('active');
+                loadProgress();
+                renderCalendar();
+            }
+        }
+
+        function loadProgress() {
+            if (!localStorage.getItem('nnn_checkins')) {
+                localStorage.setItem('nnn_checkins', JSON.stringify({}));
+            }
+            updateStats();
+        }
+
+        function startChallenge() {
+            const username = document.getElementById('usernameInput').value.trim();
+            if (!username) {
+                showModal('Lỗi', 'Vui lòng nhập tên của bạn!');
+                return;
+            }
+
+            localStorage.setItem('nnn_username', username);
             document.getElementById('displayUsername').textContent = username;
             document.getElementById('userSetup').style.display = 'none';
             document.getElementById('dashboard').classList.add('active');
-            loadProgress();
+
+            if (!localStorage.getItem('nnn_checkins')) {
+                localStorage.setItem('nnn_checkins', JSON.stringify({}));
+            }
+
             renderCalendar();
+            updateStats();
         }
-    }
 
-    function loadProgress() {
-        // Đảm bảo có dữ liệu checkins
-        if (!localStorage.getItem('nnn_checkins')) {
-            localStorage.setItem('nnn_checkins', JSON.stringify({}));
-        }
-        updateStats();
-    }
+        function renderCalendar() {
+            const calendar = document.getElementById('calendar');
+            calendar.innerHTML = '';
 
-    function startChallenge() {
-        const username = document.getElementById('usernameInput').value.trim();
-        if (!username) {
-            alert('Vui lòng nhập tên của bạn!');
-            return;
-        }
-        
-        localStorage.setItem('nnn_username', username);
-        document.getElementById('displayUsername').textContent = username;
-        document.getElementById('userSetup').style.display = 'none';
-        document.getElementById('dashboard').classList.add('active');
-        
-        // Khởi tạo dữ liệu nếu chưa có
-        if (!localStorage.getItem('nnn_checkins')) {
-            localStorage.setItem('nnn_checkins', JSON.stringify({}));
-        }
-        
-        renderCalendar();
-        updateStats();
-    }
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const currentMonth = today.getMonth();
+            const currentDay = today.getDate();
 
-    function renderCalendar() {
-        const calendar = document.getElementById('calendar');
-        calendar.innerHTML = '';
-        
-        const today = new Date();
-        const currentYear = today.getFullYear();
-        const currentMonth = today.getMonth();
-        const currentDay = today.getDate();
-        
-        // Chỉ render nếu đang ở tháng 11 và năm 2025 (để phù hợp thử thách)
-        if (currentMonth === 10 && currentYear === 2025) {
-            for (let day = 1; day <= 30; day++) {
-                const dayEl = document.createElement('div');
-                dayEl.className = 'day';
-                
-                const checkins = JSON.parse(localStorage.getItem('nnn_checkins') || '{}');
-                const dayKey = `2025-11-${String(day).padStart(2, '0')}`;
-                
-                if (checkins[dayKey] === 'success') {
-                    dayEl.classList.add('checked');
-                } else if (checkins[dayKey] === 'failed') {
-                    dayEl.classList.add('failed');
-                }
-                
-                if (day === currentDay) {
-                    dayEl.classList.add('today');
-                }
-                
-                dayEl.innerHTML = `
-                    <div class="day-number">${day}</div>
-                    <div class="day-status">${checkins[dayKey] === 'success' ? '✅' : checkins[dayKey] === 'failed' ? '❌' : ''}</div>
-                `;
-                
-                // Thêm event click để xem chi tiết (tùy chọn)
-                dayEl.onclick = () => {
-                    if (checkins[dayKey]) {
-                        alert(`Ngày ${day}: ${checkins[dayKey] === 'success' ? 'Thành công! ✅' : 'Thất bại. 😔 Hãy cố lên!'}`);
+            if (currentMonth === 10 && currentYear === 2025) {
+                for (let day = 1; day <= 30; day++) {
+                    const dayEl = document.createElement('div');
+                    dayEl.className = 'day';
+
+                    const checkins = JSON.parse(localStorage.getItem('nnn_checkins') || '{}');
+                    const dayKey = `2025-11-${String(day).padStart(2, '0')}`;
+
+                    if (checkins[dayKey] === 'success') {
+                        dayEl.classList.add('checked');
+                    } else if (checkins[dayKey] === 'failed') {
+                        dayEl.classList.add('failed');
                     }
-                };
-                
-                calendar.appendChild(dayEl);
-            }
-        } else {
-            calendar.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 20px; color: #6c757d;">Thử thách chỉ diễn ra trong tháng 11/2025! Hãy quay lại vào lúc đó nhé! 📅</p>';
-        }
-        
-        updateStats();
-    }
 
-    function checkIn() {
-        const today = new Date();
-        const currentYear = today.getFullYear();
-        const currentMonth = today.getMonth();
-        const currentDay = today.getDate();
-        
-        if (currentMonth !== 10 || currentYear !== 2025) {
-            alert('Thử thách chỉ diễn ra trong tháng 11/2025! Hãy quay lại vào lúc đó.');
-            return;
-        }
-        
-        const dayKey = `2025-11-${String(currentDay).padStart(2, '0')}`;
-        const checkins = JSON.parse(localStorage.getItem('nnn_checkins') || '{}');
-        
-        if (checkins[dayKey]) {
-            alert('Bạn đã điểm danh cho ngày hôm nay rồi! 👍');
-            return;
-        }
-        
-        checkins[dayKey] = 'success';
-        localStorage.setItem('nnn_checkins', JSON.stringify(checkins));
-        
-        renderCalendar();
-        updateStats();
-        
-        // Hiển thị thông báo thành công
-        showMessage('Chúc mừng! Bạn đã hoàn thành ngày hôm nay. Tiếp tục giữ vững nhé! 💪', 'success');
-        
-        // Cập nhật nút
-        document.getElementById('checkinBtn').disabled = true;
-        document.getElementById('checkinBtn').textContent = '✅ Đã điểm danh';
-    }
+                    if (day === currentDay) {
+                        dayEl.classList.add('today');
+                    }
 
-    function markFailed() {
-        if (!confirm('Bạn chắc chắn muốn đánh dấu thất bại hôm nay? Bạn có thể thử lại vào ngày mai!')) {
-            return;
-        }
-        
-        const today = new Date();
-        const currentYear = today.getFullYear();
-        const currentMonth = today.getMonth();
-        const currentDay = today.getDate();
-        
-        if (currentMonth !== 10 || currentYear !== 2025) {
-            alert('Thử thách chỉ diễn ra trong tháng 11/2025!');
-            return;
-        }
-        
-        const dayKey = `2025-11-${String(currentDay).padStart(2, '0')}`;
-        const checkins = JSON.parse(localStorage.getItem('nnn_checkins') || '{}');
-        
-        if (checkins[dayKey]) {
-            alert('Bạn đã ghi nhận cho ngày hôm nay rồi. Hãy trung thực nhưng có thể chỉnh sửa thủ công nếu cần.');
-            return;
-        }
-        
-        checkins[dayKey] = 'failed';
-        localStorage.setItem('nnn_checkins', JSON.stringify(checkins));
-        
-        renderCalendar();
-        updateStats();
-        
-        // Hiển thị thông báo
-        showMessage('Không sao cả! Thất bại là bài học. Ngày mai là cơ hội mới. Hãy cố lên! 🔥', 'warning');
-        
-        // Cập nhật nút
-        document.getElementById('failBtn').disabled = true;
-        document.getElementById('failBtn').textContent = '❌ Đã ghi nhận';
-    }
+                    dayEl.innerHTML = `
+                        <div class="day-number">${day}</div>
+                        <div class="day-status">${checkins[dayKey] === 'success' ? '✅' : checkins[dayKey] === 'failed' ? '❌' : ''}</div>
+                    `;
 
-    function updateStats() {
-        const checkins = JSON.parse(localStorage.getItem('nnn_checkins') || '{}');
-        const today = new Date();
-        const currentMonth = today.getMonth();
-        const currentDay = today.getDate();
-        const currentYear = today.getFullYear();
-        
-        let totalCheckins = 0;
-        let currentStreak = 0;
-        let daysCompleted = 0; // Để tính progress
-        
-        if (currentMonth === 10 && currentYear === 2025) {
-            // Tính total successes
-            for (let day = 1; day <= 30; day++) {
-                const dayKey = `2025-11-${String(day).padStart(2, '0')}`;
-                if (checkins[dayKey] === 'success') {
-                    totalCheckins++;
+                    dayEl.onclick = () => {
+                        if (checkins[dayKey]) {
+                            showModal('Ngày ' + day, checkins[dayKey] === 'success' ? 'Thành công! ✅' : 'Thất bại. 😔 Hãy cố lên!', checkins[dayKey] === 'success' ? 'success' : 'warning');
+                        } else {
+                            if (day === currentDay) {
+                                showModal('Nhắc nhở', 'Sử dụng nút điểm danh bên dưới để ghi nhận ngày hôm nay nhé! 📝');
+                            } else {
+                                showModal('Ê mày', 'chắc đéo gì đã hết ngày hôm nay mà oai');
+                            }
+                        }
+                    };
+
+                    calendar.appendChild(dayEl);
                 }
-                if (day <= currentDay) {
-                    daysCompleted++;
-                }
+            } else {
+                calendar.innerHTML = '<p style="grid-column: 1/-1; text-align: center; padding: 20px; color: #6c757d;">Thử thách chỉ diễn ra trong tháng 11/2025! Hãy quay lại vào lúc đó nhé! 📅</p>';
             }
-            
-            // Tính current streak: consecutive successes từ ngày hiện tại ngược về
-            for (let day = currentDay; day >= 1; day--) {
-                const dayKey = `2025-11-${String(day).padStart(2, '0')}`;
-                if (checkins[dayKey] === 'success') {
-                    currentStreak++;
-                } else {
-                    break;
-                }
-            }
+
+            updateStats();
         }
-        
-        const daysRemaining = 30 - currentDay + 1;
-        
-        // Cập nhật UI
-        document.getElementById('currentStreak').textContent = currentStreak;
-        document.getElementById('totalCheckins').textContent = totalCheckins;
-        document.getElementById('daysRemaining').textContent = daysRemaining;
-        
-        // Progress bar: dựa trên ngày đã qua
-        const progressPercent = Math.round((daysCompleted / 30) * 100);
-        const progressBar = document.getElementById('progressBar');
-        progressBar.style.width = progressPercent + '%';
-        progressBar.textContent = progressPercent + '%';
-        
-        // Kích hoạt/tắt nút dựa trên ngày hôm nay
-        const todayKey = `2025-11-${String(currentDay).padStart(2, '0')}`;
-        const todayStatus = checkins[todayKey];
-        if (todayStatus) {
+
+        function checkIn() {
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const currentMonth = today.getMonth();
+            const currentDay = today.getDate();
+
+            if (currentMonth !== 10 || currentYear !== 2025) {
+                showModal('Lỗi', 'Thử thách chỉ diễn ra trong tháng 11/2025! Hãy quay lại vào lúc đó.');
+                return;
+            }
+
+            const dayKey = `2025-11-${String(currentDay).padStart(2, '0')}`;
+            const checkins = JSON.parse(localStorage.getItem('nnn_checkins') || '{}');
+
+            if (checkins[dayKey]) {
+                showModal('Đã ghi nhận', 'Bạn đã điểm danh cho ngày hôm nay rồi! 👍');
+                return;
+            }
+
+            checkins[dayKey] = 'success';
+            localStorage.setItem('nnn_checkins', JSON.stringify(checkins));
+
+            renderCalendar();
+            updateStats();
+
+            showMessage('Chúc mừng! Bạn đã hoàn thành ngày hôm nay. Tiếp tục giữ vững nhé! 💪', 'success');
+
             document.getElementById('checkinBtn').disabled = true;
             document.getElementById('checkinBtn').textContent = '✅ Đã điểm danh';
+        }
+
+        function markFailed() {
+            if (!confirm('Bạn chắc chắn muốn đánh dấu thất bại hôm nay? Bạn có thể thử lại vào ngày mai!')) {
+                return;
+            }
+
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const currentMonth = today.getMonth();
+            const currentDay = today.getDate();
+
+            if (currentMonth !== 10 || currentYear !== 2025) {
+                showModal('Lỗi', 'Thử thách chỉ diễn ra trong tháng 11/2025!');
+                return;
+            }
+
+            const dayKey = `2025-11-${String(currentDay).padStart(2, '0')}`;
+            const checkins = JSON.parse(localStorage.getItem('nnn_checkins') || '{}');
+
+            if (checkins[dayKey]) {
+                showModal('Đã ghi nhận', 'Bạn đã ghi nhận cho ngày hôm nay rồi. Hãy trung thực nhưng có thể chỉnh sửa thủ công nếu cần.');
+                return;
+            }
+
+            checkins[dayKey] = 'failed';
+            localStorage.setItem('nnn_checkins', JSON.stringify(checkins));
+
+            renderCalendar();
+            updateStats();
+
+            showMessage('Bạn là thằng ăn hại, tôi chịu bạn rồi', 'warning');
+
             document.getElementById('failBtn').disabled = true;
-            document.getElementById('failBtn').textContent = todayStatus === 'success' ? '✅ Đã thành công' : '❌ Đã thất bại';
-        } else {
-            document.getElementById('checkinBtn').disabled = false;
-            document.getElementById('checkinBtn').textContent = '✅ Điểm danh thành công';
-            document.getElementById('failBtn').disabled = false;
-            document.getElementById('failBtn').textContent = '❌ Đánh dấu thất bại';
+            document.getElementById('failBtn').textContent = '❌ Đã ghi nhận';
         }
-    }
 
-    function resetChallenge() {
-        if (confirm('Bạn có chắc muốn reset toàn bộ tiến độ? Dữ liệu sẽ bị xóa vĩnh viễn!')) {
-            localStorage.removeItem('nnn_username');
-            localStorage.removeItem('nnn_checkins');
-            location.reload();
+        function updateStats() {
+            const checkins = JSON.parse(localStorage.getItem('nnn_checkins') || '{}');
+            const today = new Date();
+            const currentMonth = today.getMonth();
+            const currentDay = today.getDate();
+            const currentYear = today.getFullYear();
+
+            let totalCheckins = 0;
+            let currentStreak = 0;
+            let daysCompleted = 0;
+
+            if (currentMonth === 10 && currentYear === 2025) {
+                for (let day = 1; day <= 30; day++) {
+                    const dayKey = `2025-11-${String(day).padStart(2, '0')}`;
+                    if (checkins[dayKey] === 'success') {
+                        totalCheckins++;
+                    }
+                    if (day <= currentDay) {
+                        daysCompleted++;
+                    }
+                }
+
+                for (let day = currentDay; day >= 1; day--) {
+                    const dayKey = `2025-11-${String(day).padStart(2, '0')}`;
+                    if (checkins[dayKey] === 'success') {
+                        currentStreak++;
+                    } else {
+                        break;
+                    }
+                }
+            }
+
+            const daysRemaining = 30 - currentDay + 1;
+
+            document.getElementById('currentStreak').textContent = currentStreak;
+            document.getElementById('totalCheckins').textContent = totalCheckins;
+            document.getElementById('daysRemaining').textContent = daysRemaining;
+
+            const progressPercent = Math.round((daysCompleted / 30) * 100);
+            const progressBar = document.getElementById('progressBar');
+            progressBar.style.width = progressPercent + '%';
+            progressBar.textContent = progressPercent + '%';
+
+            const todayKey = `2025-11-${String(currentDay).padStart(2, '0')}`;
+            const todayStatus = checkins[todayKey];
+            if (todayStatus) {
+                document.getElementById('checkinBtn').disabled = true;
+                document.getElementById('checkinBtn').textContent = '✅ Đã điểm danh';
+                document.getElementById('failBtn').disabled = true;
+                document.getElementById('failBtn').textContent = todayStatus === 'success' ? '✅ Đã thành công' : '❌ Đã thất bại';
+            } else {
+                document.getElementById('checkinBtn').disabled = false;
+                document.getElementById('checkinBtn').textContent = '✅ Điểm danh thành công';
+                document.getElementById('failBtn').disabled = false;
+                document.getElementById('failBtn').textContent = '❌ Đánh dấu thất bại';
+            }
         }
-    }
 
-    function showMessage(message, type) {
-        // Tạo element message tạm thời
-        const msgDiv = document.createElement('div');
-        msgDiv.className = type === 'success' ? 'success-message' : 'warning-message';
-        msgDiv.style.margin = '20px 0';
-        msgDiv.innerHTML = `<strong>${type === 'success' ? '🎉 Thành công!' : '⚠️ Thông báo:'}</strong> ${message}`;
-        
-        // Thêm vào check-in section
-        const checkInSection = document.querySelector('.check-in-section');
-        checkInSection.appendChild(msgDiv);
-        
-        // Xóa sau 5 giây
-        setTimeout(() => {
-            msgDiv.remove();
-        }, 5000);
-    }
+        function resetChallenge() {
+            if (confirm('Bạn có chắc muốn reset toàn bộ tiến độ? Dữ liệu sẽ bị xóa vĩnh viễn!')) {
+                localStorage.removeItem('nnn_username');
+                localStorage.removeItem('nnn_checkins');
+                location.reload();
+            }
+        }
 
-    // Cập nhật stats định kỳ (mỗi giờ, ví dụ)
-    setInterval(updateStats, 3600000); // 1 giờ
-    setInterval(updateMotivationalQuote, 300000); // 5 phút
-</script>
+        function showMessage(message, type) {
+            const msgDiv = document.createElement('div');
+            msgDiv.className = type === 'success' ? 'success-message' : 'warning-message';
+            msgDiv.style.margin = '20px 0';
+            msgDiv.innerHTML = `<strong>${type === 'success' ? '🎉 Thành công!' : '⚠️ Thông báo:'}</strong> ${message}`;
 
+            const checkInSection = document.querySelector('.check-in-section');
+            checkInSection.appendChild(msgDiv);
+
+            setTimeout(() => {
+                msgDiv.remove();
+            }, 5000);
+        }
+
+        // Cập nhật định kỳ
+        setInterval(updateStats, 3600000); // 1 giờ
+        setInterval(updateMotivationalQuote, 300000); // 5 phút
+    </script>
 </body>
+</html>
